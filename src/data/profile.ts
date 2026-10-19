@@ -2,7 +2,7 @@
 // DRAFT: wording is a placeholder until Miya fills in the real text.
 
 export const profile = {
-  name: "Miya",
+  name: "Olga-Miya Molodtsova",
   // DRAFT
   role: "Designer and developer",
   location: "Remote",
@@ -12,7 +12,10 @@ export const profile = {
   // DRAFT
   summary:
     "I work where design, research and code meet. I want a product to be clear, not just good-looking, so I talk to people first and only then draw and write code.",
-  links: [{ label: "GitHub", href: "https://github.com/strangeshiro" }],
+  links: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/olga-miya-molodtsova/" },
+    { label: "GitHub", href: "https://github.com/strangeshiro" },
+  ],
 };
 
 // DRAFT
