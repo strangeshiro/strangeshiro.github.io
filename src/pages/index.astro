@@ -1,0 +1,102 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, principles, projects } from "../data/profile";
+---
+<Base>
+  <section class="hero container" aria-labelledby="hero-title">
+    <p class="label muted">{profile.role} · {profile.location}</p>
+    <h1 id="hero-title">{profile.name}<em>.</em></h1>
+    <p class="lede muted">{profile.oneLiner}</p>
+    <div class="cta">
+      <a class="button primary" href="#contact">Написать мне</a>
+      <a class="button" href="#work">Проекты</a>
+    </div>
+  </section>
+
+  <section id="about" class="container block" aria-labelledby="about-title">
+    <h2 id="about-title" class="section-title">Как я<br /><em>работаю.</em></h2>
+    <ol class="principles">
+      {principles.map((p, i) => (
+        <li>
+          <p class="label">{p.label}</p>
+          <span class="numeral" aria-hidden="true">{i + 1}</span>
+          <h3>{p.title}</h3>
+          <p class="body">{p.text}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="prose muted">{profile.summary}</p>
+  </section>
+
+  <section id="work" class="container block" aria-labelledby="work-title">
+    <h2 id="work-title" class="section-title">Что я <em>сделала.</em></h2>
+    <ol class="cases">
+      {projects.map((p, i) => (
+        <li class="case">
+          <span class="numeral" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+          <div class="case-body">
+            <p class="label">{p.kind} · {p.year}</p>
+            <h3>{p.href ? <a href={p.href} target="_blank" rel="noopener">{p.name}</a> : p.name}</h3>
+            <p class="muted">{p.text}</p>
+            <ul class="chips">{p.stack.map((s) => <li>{s}</li>)}</ul>
+          </div>
+          {p.href && <span class="arrow" aria-hidden="true">↗</span>}
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section id="contact" class="container block contact" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="section-title">Давайте сделаем<br /><em>что-нибудь вместе.</em></h2>
+    <p class="prose muted">Открыта к проектам и интересным разговорам.</p>
+    <ul class="contact-list">
+      {profile.links.map((l) => (
+        <li>
+          <span class="label">{l.label}</span>
+          <a href={l.href} rel="me noopener" target="_blank">{l.href.replace("https://", "")}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .muted { color: var(--muted); }
+
+  .hero { display: grid; gap: 32px; padding-block: 96px 40px; border-bottom: 1px solid var(--line); padding-bottom: 56px; }
+  .hero h1 { font-size: clamp(4rem, 16vw, 12rem); font-style: normal; font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; }
+  .hero h1 em { font-weight: 400; color: var(--accent); }
+  .lede { font-size: 1.2rem; line-height: 1.6; max-width: 46ch; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .block { padding-top: 140px; display: grid; gap: 48px; scroll-margin-top: 72px; }
+  .section-title { font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 1; letter-spacing: -0.02em; }
+  .section-title em { font-weight: 400; }
+
+  .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 48px 40px; list-style: none; margin: 0; padding: 0; }
+  .principles li { display: grid; gap: 28px; align-content: start; }
+  .principles h3 { font-size: clamp(2rem, 3.4vw, 2.6rem); line-height: 1.12; }
+  .principles .body { font-size: 1.15rem; line-height: 1.5; max-width: 28ch; }
+
+  .cases { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--fg); }
+  .case { position: relative; display: grid; grid-template-columns: 110px 1fr auto; gap: 24px; align-items: start; padding-block: 32px; border-bottom: 1px solid var(--line); }
+  .case .numeral { font-size: clamp(2.6rem, 5vw, 4rem); color: var(--muted); transition: color .2s; }
+  .case-body { display: grid; gap: 12px; min-width: 0; }
+  .case h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+  .case h3 a { text-decoration: none; }
+  .case h3 a::after { content: ""; position: absolute; inset: 0; }
+  .case .arrow { font: 400 2rem/1 var(--font-display); transition: transform .2s; padding-top: 18px; }
+  .case:hover .numeral, .case:hover .arrow { color: var(--accent); }
+  .case:hover .arrow { transform: translate(4px, -4px); }
+  @media (max-width: 640px) {
+    .case { grid-template-columns: 1fr; gap: 12px; }
+    .case .arrow { display: none; }
+  }
+
+  .contact { border-top: 1px solid var(--fg); margin-top: 140px; padding-top: 80px; }
+  .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  .contact-list li { display: grid; grid-template-columns: 120px 1fr; align-items: baseline; gap: 16px; min-width: 0; }
+  .contact-list .label { color: var(--muted); }
+  .contact-list a { font: italic 400 clamp(1.2rem, 2.4vw, 2rem)/1.2 var(--font-display); overflow-wrap: break-word; text-decoration: none; }
+  @media (max-width: 480px) { .contact-list li { grid-template-columns: 1fr; gap: 4px; } }
+</style>

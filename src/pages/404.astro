@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="404 · Страница не найдена" description="Такой страницы нет.">
+  <section class="container nf">
+    <p class="label">Ошибка 404</p>
+    <h1>Здесь <em>пусто.</em></h1>
+    <a class="button primary" href="/">На главную</a>
+  </section>
+</Base>
+
+<style>
+  .nf { display: grid; gap: 32px; padding-block: 96px 0; justify-items: start; }
+  .nf h1 em { color: var(--accent); }
+</style>

@@ -1,0 +1,85 @@
+---
+import "../styles/global.css";
+import { profile } from "../data/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${profile.name} · ${profile.role}`,
+  description = profile.oneLiner,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">К содержимому</a>
+    <div class="proto" role="note">
+      <div class="container">Прототип · тексты черновые, их ещё нужно заменить</div>
+    </div>
+    <header class="site-header">
+      <div class="container bar">
+        <a class="brand" href="/">{profile.name}</a>
+        <nav aria-label="Основное меню">
+          <ul>
+            <li><a href="/#about">Обо мне</a></li>
+            <li><a href="/#work">Проекты</a></li>
+            <li><a href="/#contact">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container foot">
+        <span>© {new Date().getFullYear()} {profile.name}</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .proto {
+    background: var(--accent); color: var(--fg);
+    font: 400 0.72rem/1.4 var(--font-body); letter-spacing: 0.04em; text-transform: uppercase;
+    padding-block: 7px;
+  }
+  .site-header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+  .brand { font: italic 400 1.35rem/1 var(--font-display); text-decoration: none; margin-right: auto; }
+  nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { display: inline-block; padding: 12px 10px; text-decoration: none; font: 400 0.78rem/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; }
+  .site-footer { border-top: 1px solid var(--line); margin-top: 120px; }
+  .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 28px; color: var(--muted); font-size: var(--step--1); }
+  @media (max-width: 560px) {
+    nav a { padding-inline: 8px; }
+  }
+</style>

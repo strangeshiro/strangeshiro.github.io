@@ -1,0 +1,93 @@
+/* Concept: editorial black. High-contrast serif headlines (italic for the big moments), light sans body,
+   small uppercase labels, oversized serif numerals. One accent: signal red, used sparingly.
+   Same system as the Ivan Kuznetsov site. Deliberately dark-only: the look depends on pure black. */
+:root {
+  --bg: #000000;
+  --surface: #0d0d0d;
+  --fg: #ffffff;
+  --muted: #a6a6a6;
+  --line: #2a2a2a;
+  --accent: #ff3b30;
+  --pass: var(--accent);
+  --pass-soft: #2a0b09;
+  --focus: #ffffff;
+
+  --font-display: "Playfair Display", "Didot", "Bodoni 72", Georgia, serif;
+  --font-body: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.35rem;
+  --step-2: clamp(2rem, 4.5vw, 3.2rem);
+  --step-3: clamp(3.2rem, 12vw, 9rem);
+
+  --radius: 0;
+  --max: 1200px;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 300 var(--step-0)/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+strong, b { font-weight: 500; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; text-wrap: balance; margin: 0; font-weight: 700; }
+h1 { font-size: var(--step-3); font-weight: 400; font-style: italic; letter-spacing: -0.02em; }
+h2 { font-size: var(--step-2); letter-spacing: -0.01em; }
+h3 { font-size: var(--step-1); }
+p { margin: 0; }
+
+.container {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.prose { max-width: 62ch; }
+
+.label {
+  font: 400 0.78rem/1.25 var(--font-body);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.skip-link {
+  position: absolute; left: 12px; top: -48px; z-index: 20;
+  background: var(--fg); color: var(--bg); padding: 10px 14px;
+}
+.skip-link:focus { top: 12px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.chips li {
+  font: 400 0.8rem/1 var(--font-body); letter-spacing: 0.02em;
+  border: 1px solid var(--line); padding: 7px 10px; color: var(--muted);
+}
+
+.button {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 48px;
+  font: 400 0.85rem/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--fg); padding: 0 22px;
+}
+.button.primary { background: var(--fg); color: var(--bg); }
+.button.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--fg); }
+.button:not(.primary):hover { border-color: var(--accent); color: var(--accent); }
+
+/* Big serif numeral, as in "1 · 2 · 3" */
+.numeral { font: 700 clamp(3.5rem, 7vw, 5.5rem)/0.9 var(--font-display); font-variant-numeric: lining-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
