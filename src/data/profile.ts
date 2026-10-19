@@ -4,33 +4,33 @@
 export const profile = {
   name: "Miya",
   // DRAFT
-  role: "Дизайнер и разработчик",
-  location: "Удалённо",
+  role: "Designer and developer",
+  location: "Remote",
   // DRAFT
   oneLiner:
-    "Придумываю и собираю цифровые продукты целиком: от исследования и дизайна до работающего сайта или iOS-приложения.",
+    "I design and build digital products end to end: from research and design to a working website or iOS app.",
   // DRAFT
   summary:
-    "Работаю на стыке дизайна, исследований и кода. Мне важно, чтобы продукт был не только красивым, но и понятным: поэтому я сначала разговариваю с людьми, а потом рисую и программирую.",
+    "I work where design, research and code meet. I want a product to be clear, not just good-looking, so I talk to people first and only then draw and write code.",
   links: [{ label: "GitHub", href: "https://github.com/strangeshiro" }],
 };
 
 // DRAFT
 export const principles = [
   {
-    label: "Исследование",
-    title: "Сначала люди, потом пиксели.",
-    text: "Прежде чем рисовать, выясняю, кому и зачем это нужно.",
+    label: "Research",
+    title: "People first, pixels second.",
+    text: "Before I draw anything, I find out who it is for and why they need it.",
   },
   {
-    label: "Дизайн",
-    title: "Меньше, но точнее.",
-    text: "Каждый элемент на странице должен отрабатывать своё место.",
+    label: "Design",
+    title: "Less, but sharper.",
+    text: "Every element on the page has to earn its place.",
   },
   {
-    label: "Код",
-    title: "Довожу до продакшена.",
-    text: "Макет — это только начало. Я сама собираю то, что придумала.",
+    label: "Code",
+    title: "I ship it.",
+    text: "A mockup is only the start. I build what I design myself.",
   },
 ];
 
@@ -48,15 +48,15 @@ export const projects: Project[] = [
   {
     name: "French Verbs",
     year: "2026",
-    kind: "Веб и iOS",
-    text: "Справочник ста самых употребимых французских глаголов со спряжениями: веб-версия и нативное приложение на SwiftUI.",
+    kind: "Web and iOS",
+    text: "A reference of the 100 most common French verbs with their conjugations: a web version and a native SwiftUI app.",
     stack: ["HTML", "JavaScript", "SwiftUI"],
   },
   {
-    name: "Сайт Ивана Кузнецова",
+    name: "Ivan Kuznetsov's website",
     year: "2026",
-    kind: "Персональный сайт",
-    text: "Портфолио QA-лида: от анкеты и контент-брифа до вёрстки на Astro. Тот самый стиль, в котором сделан этот сайт.",
+    kind: "Personal website",
+    text: "A portfolio for a QA lead, from the questionnaire and content brief to the Astro build. This site uses the same style.",
     stack: ["Astro", "TypeScript", "CSS"],
   },
 ];

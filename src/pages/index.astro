@@ -8,13 +8,13 @@ import { profile, principles, projects } from "../data/profile";
     <h1 id="hero-title">{profile.name}<em>.</em></h1>
     <p class="lede muted">{profile.oneLiner}</p>
     <div class="cta">
-      <a class="button primary" href="#contact">Написать мне</a>
-      <a class="button" href="#work">Проекты</a>
+      <a class="button primary" href="#contact">Get in touch</a>
+      <a class="button" href="#work">See my work</a>
     </div>
   </section>
 
   <section id="about" class="container block" aria-labelledby="about-title">
-    <h2 id="about-title" class="section-title">Как я<br /><em>работаю.</em></h2>
+    <h2 id="about-title" class="section-title">How I<br /><em>work.</em></h2>
     <ol class="principles">
       {principles.map((p, i) => (
         <li>
@@ -29,7 +29,7 @@ import { profile, principles, projects } from "../data/profile";
   </section>
 
   <section id="work" class="container block" aria-labelledby="work-title">
-    <h2 id="work-title" class="section-title">Что я <em>сделала.</em></h2>
+    <h2 id="work-title" class="section-title">What I <em>made.</em></h2>
     <ol class="cases">
       {projects.map((p, i) => (
         <li class="case">
@@ -47,8 +47,8 @@ import { profile, principles, projects } from "../data/profile";
   </section>
 
   <section id="contact" class="container block contact" aria-labelledby="contact-title">
-    <h2 id="contact-title" class="section-title">Давайте сделаем<br /><em>что-нибудь вместе.</em></h2>
-    <p class="prose muted">Открыта к проектам и интересным разговорам.</p>
+    <h2 id="contact-title" class="section-title">Let's make<br /><em>something together.</em></h2>
+    <p class="prose muted">Open to projects and good conversations.</p>
     <ul class="contact-list">
       {profile.links.map((l) => (
         <li>
