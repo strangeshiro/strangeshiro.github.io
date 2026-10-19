@@ -58,6 +58,5 @@ export const projects: Project[] = [
     kind: "Персональный сайт",
     text: "Портфолио QA-лида: от анкеты и контент-брифа до вёрстки на Astro. Тот самый стиль, в котором сделан этот сайт.",
     stack: ["Astro", "TypeScript", "CSS"],
-    href: "https://starrlucky.ddns.net",
   },
 ];
