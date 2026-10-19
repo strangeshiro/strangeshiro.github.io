@@ -1,6 +1,6 @@
 /* Concept: editorial black. High-contrast serif headlines (italic for the big moments), light sans body,
    small uppercase labels, oversized serif numerals. One accent: signal red, used sparingly.
-   Same system as the Ivan Kuznetsov site. Deliberately dark-only: the look depends on pure black. */
+   Deliberately dark-only: the look depends on pure black. */
 :root {
   --bg: #000000;
   --surface: #0d0d0d;

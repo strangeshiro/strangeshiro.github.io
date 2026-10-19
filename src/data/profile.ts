@@ -52,11 +52,4 @@ export const projects: Project[] = [
     text: "A reference of the 100 most common French verbs with their conjugations: a web version and a native SwiftUI app.",
     stack: ["HTML", "JavaScript", "SwiftUI"],
   },
-  {
-    name: "Ivan Kuznetsov's website",
-    year: "2026",
-    kind: "Personal website",
-    text: "A portfolio for a QA lead, from the questionnaire and content brief to the Astro build. This site uses the same style.",
-    stack: ["Astro", "TypeScript", "CSS"],
-  },
 ];
